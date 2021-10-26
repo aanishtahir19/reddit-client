@@ -8960,6 +8960,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-loading-skeleton@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.0.1.tgz#b1ccd07d18ade80ce5d5b1563f4232331efedf46"
+  integrity sha512-YL9tSV7w53HLd5aAPPjUGp9iqUJ5+yj8ZI//E1ES1OHrWy2mSCHTRPSc37u77Di+jWph6evGVNKBr3rpAnKwDQ==
+
 react-redux@^7.2.5:
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.5.tgz#213c1b05aa1187d9c940ddfc0b29450957f6a3b8"
