@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <path
+    d="M 515.663 591.989 H 706.878 L 706.878 434.316 L 955.248 659.057 L 706.878 883.798 L 706.878 726.124 H 515.663 V 591.989 Z"
+    style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 18px;"
+    transform="matrix(0.004385, -0.99999, 0.99999, 0.004385, -412.27536, 982.558167)"
+    bx:shape="arrow 515.663 434.316 439.585 449.482 134.135 248.37 0 1@f0d1fa71" />
+</svg>
