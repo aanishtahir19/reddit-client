@@ -2,30 +2,33 @@
 import "./PostPreview.scss";
 // Importing Upvotes Component
 import PostUpvotes from "../../../PostUpvotes/PostUpvotes";
-// Imporitng Arrows
+// Importing Time Passes since postd funciton
+import {timePassedPosted} from '../../../../utils/utils.js';
+
+
 function PostPreview({ post }) {
   const imagesrc = () => {
     if (post.thumbnail_width) {
       let src = post.preview.images[0].source.url.replace("preview", "i");
       return <div className="image-container">
-        <img src={src} alt="nothing" style={{ maxWidth: "100%" }} />
+        <img src={src} alt="nothing" style={{ maxWidth: "100%" , borderRadius:"5px", height:"400px"}} />
       </div>
     }
     return null;
   };
-  let utcSeconds = post.created_utc;
-  // let d = new Date(0);
-  // d.setUTCSeconds(utcSeconds)
-  let today = new Date();
-  // console.log(((today-d)/1000)/60/60/24)
+  let timePassed = timePassedPosted(post.created);
+  
   return (
     <div className="post-preview">
       <PostUpvotes />
       <div className="preview-content">
-        <p>{`Posted by u/${post.author}`}</p>
+        <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
-
         {imagesrc()}
+        <div id="extra-details">
+          <p>{timePassed}</p>
+
+        </div>
       </div>
     </div>
   );

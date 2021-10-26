@@ -14,7 +14,7 @@
   }
   
   .preview-content {
-
+    width: 90%;
     margin-left: 10px;
     p{
       @include font-color.font-post-details;
@@ -23,6 +23,12 @@
       margin-top: 10px;
     }
     .image-container{
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #extra-details{
       margin-top: 10px;
     }
   }
