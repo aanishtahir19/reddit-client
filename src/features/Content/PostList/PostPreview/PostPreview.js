@@ -18,6 +18,11 @@ function PostPreview({ post}) {
     }
     return null;
   };
+  // return(
+  //   <div>
+  //     {post.author}
+  //   </div>
+  // )
   let timePassed = timePassedPosted(post.created);
     return (
       <div className="post-preview">

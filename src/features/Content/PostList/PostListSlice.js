@@ -6,13 +6,16 @@ export const PostList = createSlice({
     name:"PostList",
     initialState:{
         isLoading: true,
+        subreddit:"jokes",
+        posts:[]
 
     },
     reducers:{
-        loadPosts:(state)=>{
-            console.log("aanish")
+        addLoadedPosts:(state, action)=>{
+            state.posts = action.payload;
+            state.isLoading = false
         }
     }
 })
-
+export const {addLoadedPosts} = PostList.actions;
 export default PostList.reducer;
