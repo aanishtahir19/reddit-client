@@ -16,7 +16,7 @@
     line-height: 1.25rem;
     color: #d7dadc;
 }
-.font-post-details{
+@mixin font-post-details{
     font-family: 'Ubuntu', sans-serif;
     font-size: 0.75rem;
     font-weight: 400;

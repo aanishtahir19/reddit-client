@@ -548,7 +548,7 @@ const result = {
             images: [
               {
                 source: {
-                  url: "https://preview.redd.it/fkmbtpn0bmv71.jpg?auto=webp&amp;s=0d020d0246eae0be20a5547a5758a34347224d21",
+                  url: "https://.redd.it/fkmbtpn0bmv71.jpg?auto=webp&amp;s=0d020d0246eae0be20a5547a5758a34347224d21",
                   width: 1284,
                   height: 1305,
                 },
