@@ -1,7 +1,7 @@
 export const API_ROOT = 'https://www.reddit.com/';
 
-export const getSubredditPosts = async (subreddit) => {
-    const response = await fetch(`${API_ROOT}r/${subreddit}/hot.json?`)
+export const getSubredditPosts = async (subreddit, listing) => {
+    const response = await fetch(`${API_ROOT}r/${subreddit}/${listing}.json?`)
 //   const response = await fetch(`${API_ROOT}/${subreddit}.json`);
   const json = await response.json();
     // return json;

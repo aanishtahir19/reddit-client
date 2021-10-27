@@ -11,17 +11,21 @@ import { useSelector , useDispatch} from "react-redux";
 import { useEffect } from "react";
 // import middleware thunk for fetching subreddit posts
 import {fetchSubreddiPosts} from './PostListSlice.js';
+// Import Listing Selector Component
+import ListingSelector from './ListingSelector/ListingSelector.js'
 
 function PostList() {
   const dispatch = useDispatch();
   const posts = useSelector((state)=> state.PostList.posts);
-  const subreddit = useSelector((state)=> state.PostList.subreddit);
+  const listing = useSelector((state)=> state.PostList.listing);
 
   useEffect(()=>{
-    const user = {subreddit: subreddit};
-    dispatch(fetchSubreddiPosts(user));
-  }, [subreddit, dispatch])
+    dispatch(fetchSubreddiPosts());
+  }, [dispatch , listing])
 
+  let listingSelectorValue = {
+    [listing]: true
+  }
   const loadingFlag = useSelector((state) => state.PostList.isLoading);
   if (loadingFlag) {
     return (
@@ -33,6 +37,7 @@ function PostList() {
   }
   return (
     <div className="post-list">
+      <ListingSelector selectedListing={listingSelectorValue}/>
       {posts.map((post, index) => (
         <PostPreview
           // post={null}
