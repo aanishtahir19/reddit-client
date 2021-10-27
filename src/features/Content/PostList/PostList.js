@@ -13,25 +13,19 @@ import { getSubredditPosts } from "../../../utils/api";
 import { useEffect } from "react";
 // import acttion creators
 import {addLoadedPosts} from './PostListSlice.js';
-
+// import middleware thunk for fetching subreddit posts
+import {fetchSubreddiPosts} from './PostListSlice.js';
 
 function PostList() {
   const dispatch = useDispatch();
   const posts = useSelector((state)=> state.PostList.posts);
   const subreddit = useSelector((state)=> state.PostList.subreddit);
+  
   useEffect(()=>{
-    async function fetchData() {
-      try{
-        const data = await getSubredditPosts(subreddit);
-        dispatch(addLoadedPosts(data));
-      }
-      catch(e){
-        console.log(e)
-      }
-      
-    }
-    fetchData();
+    const user = {subreddit: subreddit};
+    dispatch(fetchSubreddiPosts(user));
   }, [subreddit, dispatch])
+
   const loadingFlag = useSelector((state) => state.PostList.isLoading);
   if (loadingFlag) {
     return (

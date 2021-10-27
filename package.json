@@ -10,6 +10,7 @@
     "react-loading-skeleton": "^3.0.1",
     "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
+    "redux-thunk": "^2.4.0",
     "reset.css": "^2.0.2",
     "sass": "^1.43.3"
   },
