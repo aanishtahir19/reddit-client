@@ -7,12 +7,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 // Import UseSelector
 import { useSelector , useDispatch} from "react-redux";
-// Import data from api call
-import { getSubredditPosts } from "../../../utils/api";
 // import UseEffect
 import { useEffect } from "react";
-// import acttion creators
-import {addLoadedPosts} from './PostListSlice.js';
 // import middleware thunk for fetching subreddit posts
 import {fetchSubreddiPosts} from './PostListSlice.js';
 
@@ -20,7 +16,7 @@ function PostList() {
   const dispatch = useDispatch();
   const posts = useSelector((state)=> state.PostList.posts);
   const subreddit = useSelector((state)=> state.PostList.subreddit);
-  
+
   useEffect(()=>{
     const user = {subreddit: subreddit};
     dispatch(fetchSubreddiPosts(user));
