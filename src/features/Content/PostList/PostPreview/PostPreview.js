@@ -42,17 +42,15 @@ function PostPreview({ post }) {
       if (post.selftext) {
         // setData(post.selftext.split("\n").map((para, index)=> {
         //   return <div><p key={index}>{para}</p><br/></div>
-        // }));
-        setData(converter.makeHtml(post.selftext))
+        // }));c
         
-        
-      }
-      
-    }
-    
-    
+        setData(converter.makeHtml(post.selftext) ) 
+      } 
+    }    
   };
-
+  if(post.secure_media){
+    console.log(post.secure_media.oembed.height)
+  }
   return (
     <div  className="post-preview">
       {<PostUpvotes upvotes={post.ups} />}
@@ -62,6 +60,8 @@ function PostPreview({ post }) {
         {imagesrc()}
         <div className="post-text">
           <Markup   content={data}/>
+          {post.secure_media_embed.media_domain_url? <iframe src={post.secure_media_embed.media_domain_url} height={post.secure_media_embed.height} width={post.secure_media_embed.weight}alt=""></iframe>: null}
+          
           </div>
         
         <div id="extra-details">
