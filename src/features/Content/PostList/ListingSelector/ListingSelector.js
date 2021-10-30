@@ -8,8 +8,8 @@ function ListingSelector() {
   
   const dispatch = useDispatch();
   const subreddit = useSelector((state)=> state.PostList.subreddit);
-  const handleBestClick = (e) => {
-    dispatch(changeListing("best"));
+  const handleRisingClick = (e) => {
+    dispatch(changeListing("rising"));
   };
   const handleHotClick = (e) => {
     dispatch(changeListing("hot"));
@@ -24,45 +24,26 @@ function ListingSelector() {
   return (
     <ul className="listing-selector">
       <Link 
-        to={`/${subreddit}/best`}
+        to={`/${subreddit}/hot`}
         // state={{subreddit: subreddit, listing: selectedListing}}
       >
-        {selectedListing=== "best"? (
+        {selectedListing=== "hot"? (
           <li>
             <button className="active">
               <i className="fas fa-rocket"></i>
-              <span>Best</span>
+              <span>Hot</span>
             </button>
           </li>
         ) : (
           <li>
-            <button onClick={handleBestClick}>
+            <button onClick={handleHotClick}>
               <i className="fas fa-rocket"></i>
-              <span>Best</span>
+              <span>Hot</span>
             </button>
           </li>
         )}
       </Link>
-    <Link 
-        to={`/${subreddit}/hot`}
-        // state={{subreddit: subreddit, listing: selectedListing}}
-    >
-      {selectedListing=== "hot" ? (
-        <li>
-          <button className="active">
-            <i class="fas fa-fire-alt"></i>
-            <span>Hot</span>
-          </button>
-        </li>
-      ) : (
-        <li>
-          <button onClick={handleHotClick}>
-            <i class="fas fa-fire-alt"></i>
-            <span>Hot</span>
-          </button>
-        </li>
-      )}
-      </Link>
+    
       <Link 
         to={`/${subreddit}/new`}
         // state={{subreddit: subreddit, listing: selectedListing}}
@@ -101,6 +82,26 @@ function ListingSelector() {
           <button onClick={handleTopClick}>
             <i class="fas fa-arrow-circle-up"></i>
             <span>Top</span>
+          </button>
+        </li>
+      )}
+      </Link>
+      <Link 
+        to={`/${subreddit}/rising`}
+        // state={{subreddit: subreddit, listing: selectedListing}}
+    >
+      {selectedListing=== "rising" ? (
+        <li>
+          <button className="active">
+          <i class="fas fa-seedling"></i>
+            <span>Rising</span>
+          </button>
+        </li>
+      ) : (
+        <li>
+          <button onClick={handleRisingClick}>
+          <i class="fas fa-seedling"></i>
+            <span>Rising</span>
           </button>
         </li>
       )}

@@ -20,10 +20,15 @@ function PostList() {
   const posts = useSelector((state)=> state.PostList.posts);
   const listing = useSelector((state)=> state.PostList.listing);
   const subreddit = useSelector(state=> state.PostList.subreddit)
+  const defaultListing = useSelector((state)=> state.PostList.defaultListing);
+  const defaultSub = useSelector(state=> state.PostList.defaultSub)
   let {sub, list} = useParams();
   if(sub !== undefined && list !== undefined){
     dispatch(changeSubreddit(sub))
     dispatch(changeListing(list));
+  }else{
+    dispatch(changeSubreddit(defaultSub))
+    dispatch(changeListing(defaultListing));
   }
   useEffect(()=>{
     

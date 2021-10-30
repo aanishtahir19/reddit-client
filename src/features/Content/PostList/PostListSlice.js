@@ -26,8 +26,10 @@ export const PostList = createSlice({
         isLoading: true,
         subredditListLoading:true,
         subredditList:[],
+        defaultSub:"home",
+        defaultListing:"hot",
         subreddit:"home",
-        listing:"best",
+        listing:"hot",
         posts:[]
 
     },
