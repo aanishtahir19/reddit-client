@@ -13,7 +13,11 @@ export const getSubreddits = async () => {
   const json = await response.json();
   return json.data.children.map((subreddit) => subreddit.data);
 };
-
+export const getPostData = async (id) =>{
+  const response = await fetch (`https://api.reddit.com/api/info/?id=t3_${id}`);
+  const json = await response.json();
+  return json.data.children[0].data;
+}
 export const getPostComments = async (permalink) => {
   const response = await fetch(`${API_ROOT}${permalink}.json`);
   const json = await response.json();
