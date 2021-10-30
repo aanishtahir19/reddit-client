@@ -36,7 +36,7 @@ function PostPreview({ post }) {
   let timePassed = timePassedPosted(post.created);
 
   const togglePostData = () => {
-    console.log(post.thumbnail);
+    console.log(post.url.match("reddit"));
     if (data) {
       setData(null);
     } else {
@@ -52,18 +52,19 @@ function PostPreview({ post }) {
   return (
     <div className="post-preview">
       {<PostUpvotes upvotes={post.ups} />}
-      <div className="preview-content" onClick={() => togglePostData()}>
+      <div className="preview-content" >
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
-        {imagesrc()}
-        {post.selftext ? (
-          <button onClick={() => togglePostData()}>Show Text</button>
-        ) : null}
-        {post.url ? (
+        {(post.url&& post.url.match("www.reddit.com")===null) ? (
           <a href={post.url} target="_blank">
             {post.url}
           </a>
         ) : null}
+        {imagesrc()}
+        {post.selftext ? (
+          <button onClick={() => togglePostData()}>Show Text</button>
+        ) : null}
+        
         <div className="post-text">
           <Markup content={data} />
           {post.secure_media_embed.media_domain_url ? (
