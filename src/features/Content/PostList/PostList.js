@@ -10,7 +10,7 @@ import { useSelector , useDispatch} from "react-redux";
 // import UseEffect
 import { useEffect } from "react";
 // import middleware thunk for fetching subreddit posts
-import {fetchSubreddiPosts} from './PostListSlice.js';
+import {fetchSubredditPosts} from './PostListSlice.js';
 // Import Listing Selector Component
 import ListingSelector from './ListingSelector/ListingSelector.js'
 
@@ -18,10 +18,10 @@ function PostList() {
   const dispatch = useDispatch();
   const posts = useSelector((state)=> state.PostList.posts);
   const listing = useSelector((state)=> state.PostList.listing);
-
+  const subreddit = useSelector(state=> state.PostList.subreddit)
   useEffect(()=>{
-    dispatch(fetchSubreddiPosts());
-  }, [dispatch , listing])
+    dispatch(fetchSubredditPosts());
+  }, [dispatch , listing, subreddit])
 
   let listingSelectorValue = {
     [listing]: true

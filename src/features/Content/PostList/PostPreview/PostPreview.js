@@ -9,20 +9,25 @@ import {timePassedPosted} from '../../../../utils/utils.js';
 import "react-loading-skeleton/dist/skeleton.css";
 
 function PostPreview({ post}) {
+  
   const imagesrc = () => {
-    if (post.thumbnail_width) {
-      let src = post.preview.images[0].source.url.replace("preview", "i");
+    
+    if (post.preview !== undefined) {
+      
+      let src;
+      if(post.preview.images[0].source.url.match("external-preview")){
+
+        return null;
+      }
+        src = post.preview.images[0].source.url.replace("preview", "i");
+      
+      
       return <div className="image-container">
         <img src={src} alt="nothing" style={{ maxWidth: "100%" , borderRadius:"5px", height:"400px"}} />
       </div>
     }
     return null;
   };
-  // return(
-  //   <div>
-  //     {post.author}
-  //   </div>
-  // )
   let timePassed = timePassedPosted(post.created);
     return (
       <div className="post-preview">

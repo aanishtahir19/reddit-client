@@ -12,16 +12,14 @@
     "react-scripts": "4.0.3",
     "redux-thunk": "^2.4.0",
     "reset.css": "^2.0.2",
-    "sass": "^1.43.3"
+    "sass": "^1.43.3",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -34,5 +32,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
   }
 }
