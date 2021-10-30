@@ -35,3 +35,10 @@ export const timePassedPosted = (sec)=>{
         return `${Math.floor(secPassed/60/60/24/30)} months ago`
     }
 }
+export const formatUpvotes=(upvote)=>{
+    if (upvote<999){
+        return `${upvote}`;
+    }else{
+        return `${Math.floor(upvote/1000)}k`
+    }
+}

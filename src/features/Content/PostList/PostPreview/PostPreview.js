@@ -46,9 +46,9 @@ function PostPreview({ post }) {
   };
 
   return (
-    <div onClick={() => togglePostData()} className="post-preview">
+    <div  className="post-preview">
       {<PostUpvotes upvotes={post.ups} />}
-      <div className="preview-content">
+      <div className="preview-content" onClick={() => togglePostData()}>
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
         {imagesrc()}
