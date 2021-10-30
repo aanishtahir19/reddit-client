@@ -2,7 +2,7 @@
 @use '../../../../fonts-colors' as font-color;
 
 .post-preview {
-  border: 1px solid rgb(190, 190, 190);
+  border: 2px solid rgb(190, 190, 190);
   //   background-color: lightgray;
   // width: 100%;
   padding: 20px 20px 20px 0;
@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   &:hover{
-    border: 1px solid #818384
+    border: 2px solid #818384
   }
   
   .preview-content {

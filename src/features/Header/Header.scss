@@ -10,25 +10,34 @@
     padding: 10px 10rem;
     display:flex;
     justify-content: left;
-    .logo-container {
-      display: inline-flex;
-      width: 33%;
-      flex-direction: row;
-      align-items: center;
-      justify-content: left;
-      .logo {
-        width: 1.5rem;
-        @include font-color.logo-color;
+    
+      .logo-container {
+        display: inline-flex;
+        width: 33%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+        a{
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          color: black;
+        .logo {
+          width: 1.5rem;
+          @include font-color.logo-color;
+        }
+        .logo-highlight {
+          color: blue;
+          @include font-color.logo-font;
+          margin-left: 5px;
+        }
+        span {
+          margin-right: 0.3rem;
+          @include font-color.logo-font;
+        }}
       }
-      .logo-highlight {
-        color: blue;
-        @include font-color.logo-font;
-        margin-left: 5px;
-      }
-      span {
-        @include font-color.logo-font;
-      }
-    }
+    
+    
     .search-container {
         // width: 33%;
         display:inline-flex;
