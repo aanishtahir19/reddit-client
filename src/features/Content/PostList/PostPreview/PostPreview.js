@@ -38,10 +38,15 @@ function PostPreview({ post }) {
       setData(null)
     }else{
       if (post.selftext) {
-        console.log(post.selftext.split("\n").join("<br/>"))
-        setData(post.selftext.split("\n").join("<br/>"));
+        setData(post.selftext.split("\n").map((para, index)=> {
+          return <div><p key={index}>{para}</p><br/></div>
+        }));
+        
+        
       }
+      
     }
+    
     
   };
 
@@ -52,7 +57,7 @@ function PostPreview({ post }) {
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
         {imagesrc()}
-        <p className="post-text">{data}</p>
+        <div className="post-text">{data}</div>
         <div id="extra-details">
           <p>{timePassed}</p>
         </div>
@@ -60,5 +65,7 @@ function PostPreview({ post }) {
     </div>
   );
 }
+
+
 
 export default PostPreview;
