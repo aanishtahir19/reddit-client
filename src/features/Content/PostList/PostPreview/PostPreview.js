@@ -8,9 +8,11 @@ import { timePassedPosted } from "../../../../utils/utils.js";
 // import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useState } from "react";
-
+import Showdown from "showdown";
+import { Markup } from "interweave";
 function PostPreview({ post }) {
   let [data, setData] = useState(null);
+  let converter = new Showdown.Converter();
   const imagesrc = () => {
     if (post.preview !== undefined) {
       let src;
@@ -38,9 +40,10 @@ function PostPreview({ post }) {
       setData(null)
     }else{
       if (post.selftext) {
-        setData(post.selftext.split("\n").map((para, index)=> {
-          return <div><p key={index}>{para}</p><br/></div>
-        }));
+        // setData(post.selftext.split("\n").map((para, index)=> {
+        //   return <div><p key={index}>{para}</p><br/></div>
+        // }));
+        setData(converter.makeHtml(post.selftext))
         
         
       }
@@ -57,7 +60,10 @@ function PostPreview({ post }) {
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
         {imagesrc()}
-        <div className="post-text">{data}</div>
+        <div className="post-text">
+          <Markup   content={data}/>
+          </div>
+        
         <div id="extra-details">
           <p>{timePassed}</p>
         </div>
