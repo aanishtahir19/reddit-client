@@ -51,10 +51,11 @@ function PostPreview({ post }) {
   return (
     <div  className="post-preview">
       {<PostUpvotes upvotes={post.ups} />}
-      <div className="preview-content" onClick={() => togglePostData()}>
+      <div className="preview-content" >
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
         {imagesrc()}
+        <button onClick={() => togglePostData()}>Show Content</button>
         <div className="post-text">
           <Markup   content={data}/>
           {post.secure_media_embed.media_domain_url? 

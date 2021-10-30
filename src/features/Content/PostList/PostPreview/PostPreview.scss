@@ -1,6 +1,6 @@
 // Importing defined color variables
 @use '../../../../fonts-colors' as font-color;
-
+@import '../../../../fonts-colors';
 .post-preview {
   border: 2px solid rgb(190, 190, 190);
   //   background-color: lightgray;
@@ -29,6 +29,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    button{
+      margin-top:1rem;
+      border: 2px solid black;
+      border-radius: 5rem;
+      padding: 0.5rem 0.7rem;
+      font-weight: 500;
+      float: right;
+      &:hover{
+        background-color: rgb(221, 221, 221);
+      }
+
     }
     .post-text{
       margin-top: 2rem;
