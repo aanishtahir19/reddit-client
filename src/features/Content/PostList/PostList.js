@@ -8,24 +8,30 @@ import "react-loading-skeleton/dist/skeleton.css";
 // Import UseSelector
 import { useSelector , useDispatch} from "react-redux";
 // import UseEffect
-import { useEffect } from "react";
+import { useEffect} from "react";
 // import middleware thunk for fetching subreddit posts
 import {fetchSubredditPosts} from './PostListSlice.js';
 // Import Listing Selector Component
 import ListingSelector from './ListingSelector/ListingSelector.js'
-
+import { useParams } from "react-router";
+import { changeListing, changeSubreddit } from "./PostListSlice.js";
 function PostList() {
   const dispatch = useDispatch();
   const posts = useSelector((state)=> state.PostList.posts);
   const listing = useSelector((state)=> state.PostList.listing);
   const subreddit = useSelector(state=> state.PostList.subreddit)
+  let {sub, list} = useParams();
+  if(sub !== undefined && list !== undefined){
+    dispatch(changeSubreddit(sub))
+    dispatch(changeListing(list));
+  }
   useEffect(()=>{
+    
     dispatch(fetchSubredditPosts());
   }, [dispatch , listing, subreddit])
 
-  let listingSelectorValue = {
-    [listing]: true
-  }
+  
+
   const loadingFlag = useSelector((state) => state.PostList.isLoading);
   if (loadingFlag) {
     return (
@@ -35,9 +41,10 @@ function PostList() {
       </div>
     );
   }
+  
   return (
     <div className="post-list">
-      <ListingSelector selectedListing={listingSelectorValue}/>
+      <ListingSelector />
       {posts.map((post, index) => (
         <PostPreview
           // post={null}

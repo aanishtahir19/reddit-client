@@ -1,25 +1,26 @@
-import { changeSubreddit} from "../../PostList/PostListSlice";
+import { changeSubreddit } from "../../PostList/PostListSlice";
 import { useDispatch } from "react-redux";
-function SubredditTabs({src, subText, subreddit}) {
-    const dispatch = useDispatch();
-    const handleClick = (data) => {
-        dispatch(changeSubreddit(data.toLowerCase()))
-        
-      };
+import { Link } from "react-router-dom";
+function SubredditTabs({ src, subText, subreddit, listing }) {
+  const dispatch = useDispatch();
 
-    
-    return ( 
-        <li
-        className={subreddit? "active": null}>
-                    <button onClick={()=> handleClick(subText)}
-                    
-                    >
-                        <img src={src} alt="" />
-                        r/{subText}
+  const handleClick = (data) => {
+    dispatch(changeSubreddit(data.toLowerCase()));
+  };
 
-                    </button>
-                </li>
-     );
+  return (
+    <Link
+      to={`/${subText}/${listing}`}
+      // state={{subreddit: subreddit, listing: listing}}
+    >
+      <li className={subreddit ? "active" : null}>
+        <button onClick={() => handleClick(subText)}>
+          <img src={src} alt="" />
+          r/{subText}
+        </button>
+      </li>
+    </Link>
+  );
 }
 
 export default SubredditTabs;

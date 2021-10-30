@@ -10,6 +10,7 @@ function Sidebar() {
   let dispatch = useDispatch();
   let subredditList = useSelector((state) => state.PostList.subredditList);
   let subreddit = useSelector(state=> state.PostList.subreddit)
+  let listing = useSelector(state => state.PostList.listing);
   useEffect(() => {
     dispatch(fetchSubreddits());
     
@@ -28,6 +29,7 @@ function Sidebar() {
               subreddit = {sub.display_name.toLowerCase()===subreddit}
               src="https://a.thumbs.redditmedia.com/kIpBoUR8zJLMQlF8azhN-kSBsjVUidHjvZNLuHDONm8.png"
               subText={sub.display_name}
+              listing = {listing}
             />
           ))}
         </ul>

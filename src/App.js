@@ -7,14 +7,17 @@ import './App.scss';
 import Header from './features/Header/Header.js';
   // Imporitng Content Componet
 import Content from './features/Content/Content.js';
-
-
+//---------------//
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Content />
+      <BrowserRouter>
+        <Content />
+      </BrowserRouter>
+      
     </div>
   );
 }

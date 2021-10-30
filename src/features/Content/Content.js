@@ -6,6 +6,7 @@ import PostList from './PostList/PostList.js';
 import Sidebar from './Sidebar/Sidebar.js';
 // import useSelector
 import {useSelector} from 'react-redux';
+import { Route } from 'react-router';
 
 function Content() {
     const postIsLoading = useSelector(state=> state.PostList.isLoading);
@@ -18,7 +19,13 @@ function Content() {
     return ( 
         <div className="content">
             <div className="content-container">
+                <Route exact path="/">
                 <PostList/>
+                </Route>
+                <Route path="/:sub/:list">
+                    <PostList/>
+                </Route>
+                
                 {sidebar()}
             </div>
         </div>
