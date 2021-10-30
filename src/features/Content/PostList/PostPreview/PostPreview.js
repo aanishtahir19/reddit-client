@@ -29,9 +29,10 @@ function PostPreview({ post}) {
     return null;
   };
   let timePassed = timePassedPosted(post.created);
+  
     return (
       <div className="post-preview">
-        {<PostUpvotes /> }
+        {<PostUpvotes upvotes={post.ups}/> }
         <div className="preview-content">
           <p>{`Posted by u/${post.author} ${timePassed}`}</p>
           <h2>{post.title}</h2>
