@@ -36,33 +36,45 @@ function PostPreview({ post }) {
   let timePassed = timePassedPosted(post.created);
 
   const togglePostData = () => {
-    if(data){
-      setData(null)
-    }else{
+    console.log(post.thumbnail);
+    if (data) {
+      setData(null);
+    } else {
       if (post.selftext) {
         // setData(post.selftext.split("\n").map((para, index)=> {
         //   return <div><p key={index}>{para}</p><br/></div>
         // }));c
-        
-        setData(converter.makeHtml(post.selftext) ) 
-      } 
-    }    
+
+        setData(converter.makeHtml(post.selftext));
+      }
+    }
   };
   return (
-    <div  className="post-preview">
+    <div className="post-preview">
       {<PostUpvotes upvotes={post.ups} />}
-      <div className="preview-content" >
+      <div className="preview-content" onClick={() => togglePostData()}>
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
         {imagesrc()}
-        <button onClick={() => togglePostData()}>Show Content</button>
+        {post.selftext ? (
+          <button onClick={() => togglePostData()}>Show Text</button>
+        ) : null}
+        {post.url ? (
+          <a href={post.url} target="_blank">
+            {post.url}
+          </a>
+        ) : null}
         <div className="post-text">
-          <Markup   content={data}/>
-          {post.secure_media_embed.media_domain_url? 
-            <iframe src={post.secure_media_embed.media_domain_url} height="70%" allowFullScreen></iframe>: null}
-          
-          </div>
-        
+          <Markup content={data} />
+          {post.secure_media_embed.media_domain_url ? (
+            <iframe
+              src={post.secure_media_embed.media_domain_url}
+              height="70%"
+              allowFullScreen
+            ></iframe>
+          ) : null}
+        </div>
+
         <div id="extra-details">
           <p>{timePassed}</p>
         </div>
@@ -70,7 +82,5 @@ function PostPreview({ post }) {
     </div>
   );
 }
-
-
 
 export default PostPreview;

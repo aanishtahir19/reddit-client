@@ -19,8 +19,9 @@
     p{
       @include font-color.font-post-details;
     }
+    
     h2{
-      margin-top: 10px;
+      margin: 10px 0;
       line-height: 1.3rem;
       font-weight: 500;
     }
