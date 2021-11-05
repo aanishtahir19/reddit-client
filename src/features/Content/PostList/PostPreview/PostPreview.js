@@ -60,8 +60,10 @@ function PostPreview({ post }) {
           }
           
         }
-
+        
       })
+      
+    }
   }
   return (
     <div className="post-preview"  >
