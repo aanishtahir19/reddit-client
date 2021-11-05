@@ -65,8 +65,11 @@ function PostPreview({ post }) {
       
     }
   }
+  const testing = ()=>{
+    console.log(post.secure_media_embed)
+  }
   return (
-    <div className="post-preview"  >
+    <div className="post-preview"  onClick={testing}>
       {<PostUpvotes upvotes={post.ups} />}
       <div className="preview-content" >
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
@@ -103,9 +106,11 @@ function PostPreview({ post }) {
           {post.secure_media_embed.media_domain_url ? (
             <iframe
               src={post.secure_media_embed.media_domain_url}
-              height="70%"
+              height="210px"
+              width="400px"
               allowFullScreen
             ></iframe>
+            
           ) : null}
         </div>
 
