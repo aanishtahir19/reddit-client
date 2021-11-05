@@ -104,10 +104,9 @@ function PostPreview({ post }) {
         
         {/* Other Videos or gifs */}
           {post.secure_media_embed.media_domain_url ? (
-            <iframe
+            <iframe id="videos"
               src={post.secure_media_embed.media_domain_url}
-              height="210px"
-              width="400px"
+              
               allowFullScreen
             ></iframe>
             
