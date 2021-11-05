@@ -16,6 +16,8 @@
   .preview-content {
     width: 90%;
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
     p{
       @include font-color.font-post-details;
     }
@@ -34,6 +36,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .reddit-video{
+      height: 512px;
     }
     button{
       margin-top:1rem;
