@@ -73,6 +73,9 @@
     @media only screen and (max-width: 600px)  {
       #videos{
         width: 100%;
+        iframe > iframe{
+          width: 100%;
+        }
         
       }
     }

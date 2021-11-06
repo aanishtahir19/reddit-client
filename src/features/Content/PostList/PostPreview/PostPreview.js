@@ -49,67 +49,73 @@ function PostPreview({ post }) {
       }
     }
   };
-  const getPostExtraImages = ()=>{
-    if (post.media_metadata ){
+  const getPostExtraImages = () => {
+    if (post.media_metadata) {
       let data = post.media_metadata;
-      return Object.keys(data).map(key=>{
-        if ( data[key].status === "valid"){
-          if (data[key].e === "Image"){
+      return Object.keys(data).map((key) => {
+        if (data[key].status === "valid") {
+          if (data[key].e === "Image") {
             let url = data[key].s.u.replace("preview", "i");
-            return <img src={url} alt="Image"  style={{padding:"10px"}} />
+            return <img src={url} alt="Image" style={{ padding: "10px" }} />;
           }
-          
         }
-        
-      })
-      
+      });
     }
-  }
-  const testing = ()=>{
-    console.log(post.secure_media_embed)
-  }
+  };
+  const testing = () => {
+    console.log(post.secure_media_embed);
+  };
   return (
-    <div className="post-preview"  onClick={testing}>
+    <div className="post-preview" onClick={testing}>
       {<PostUpvotes upvotes={post.ups} />}
-      <div className="preview-content" >
+      <div className="preview-content">
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>
         <h2>{post.title}</h2>
 
         {/* Post Url */}
-        {(post.url&& post.url.match("www.reddit.com")===null) ? (
+        {post.url && post.url.match("www.reddit.com") === null ? (
           <a href={post.url} target="_blank">
             {post.url}
           </a>
         ) : null}
 
-
         {/* Post Image */}
         {imagesrc()}
 
-          {/* extra Images */}
-          {getPostExtraImages()}
-        
+        {/* extra Images */}
+        {getPostExtraImages()}
 
         {/* Post Text */}
         <div className="post-text">
           <Markup content={data} />
 
           {/* Reddit Video */}
-        {post.secure_media && post.secure_media.reddit_video  && post.secure_media.reddit_video.fallback_url ? 
-            <iframe clsssName="reddit-video" height="512px" width="100%" src={post.secure_media.reddit_video.fallback_url}  allowFullScreen></iframe>
-           : null}
-        {post.selftext ? (
-          <button onClick={() => togglePostData()}>Show Text</button>
-        ) : null}
-        
-        {/* Other Videos or gifs */}
-          {post.secure_media_embed.media_domain_url ? (
-            <iframe id="videos"
-              src={post.secure_media_embed.media_domain_url}
-              
+          {post.secure_media &&
+          post.secure_media.reddit_video &&
+          post.secure_media.reddit_video.fallback_url ? (
+            <iframe
+              clsssName="reddit-video"
+              height="512px"
+              width="100%"
+              src={post.secure_media.reddit_video.fallback_url}
               allowFullScreen
             ></iframe>
-            
+          ) : null}
+          {post.selftext ? (
+            <button onClick={() => togglePostData()}>Show Text</button>
+          ) : null}
+
+          {/* Other Videos or gifs */}
+          {post.secure_media_embed.media_domain_url ? (
+            <div id="videos">
+              <iframe
+                
+                src={post.secure_media_embed.media_domain_url}
+                width="100%"
+                height="200px"
+                allowFullScreen
+              ></iframe>
+            </div>
           ) : null}
         </div>
 
