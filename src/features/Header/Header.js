@@ -34,7 +34,7 @@ function Header() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Link to={`/${searchTerm}/hot`}>
+            <Link to={`/r/${searchTerm}/hot`}>
               <button type='submit' onClick={() => handleClick()}>
                 <i class='fas fa-search'></i>
               </button>

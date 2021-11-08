@@ -10,8 +10,17 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { useState } from 'react';
 import Showdown from 'showdown';
 import { Markup } from 'interweave';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 function PostPreview({ post }) {
   let [data, setData] = useState(null);
+  let { sub, list, id } = useParams();
+  let subreddit = useSelector((state) => state.PostList.subreddit);
+  if (sub === undefined) {
+    sub = subreddit;
+  }
   let converter = new Showdown.Converter();
   const imagesrc = () => {
     if (post.preview !== undefined) {
@@ -70,69 +79,75 @@ function PostPreview({ post }) {
       });
     }
   };
-  const testing = () => {
-    console.log(post.secure_media_embed);
+  const openPost = () => {
+    console.log(post);
   };
   return (
-    <div className='post-preview' onClick={testing}>
-      {<PostUpvotes upvotes={post.ups} />}
-      <div className='preview-content'>
-        <p>{`Posted by u/${post.author} ${timePassed}`}</p>
-        <h2>{post.title}</h2>
+    <div onClick={openPost}>
+      <Link to={`/r/${sub}/id/${post.id}`}>
+        <div className='post-preview'>
+          {<PostUpvotes upvotes={post.ups} />}
+          <div className='preview-content'>
+            <p>{`Posted by u/${post.author} ${timePassed}`}</p>
 
-        {/* Post Url */}
-        {post.url && post.url.match('www.reddit.com') === null ? (
-          <a href={post.url} target='_blank'>
-            {post.url}
-          </a>
-        ) : null}
+            <h2>{post.title}</h2>
 
-        {/* Post Image */}
-        {imagesrc()}
+            {/* Post Url */}
+            {post.url && post.url.match('www.reddit.com') === null ? (
+              <a href={post.url} target='_blank'>
+                {post.url}
+              </a>
+            ) : null}
 
-        {/* extra Images */}
-        {getPostExtraImages()}
+            {/* Post Image */}
+            {imagesrc()}
 
-        {/* Post Text */}
-        <div className='post-text'>
-          <Markup content={data} />
+            {/* extra Images */}
+            {/* {getPostExtraImages()} */}
 
-          {/* Reddit Video */}
-          {post.secure_media &&
-          post.secure_media.reddit_video &&
-          post.secure_media.reddit_video.fallback_url ? (
-            <iframe
-              clsssName='reddit-video'
-              height='512px'
-              width='100%'
-              src={post.secure_media.reddit_video.fallback_url}
-              allowFullScreen
-            ></iframe>
-          ) : null}
-          {post.selftext ? (
-            <button onClick={() => togglePostData()}>
-              Show Text
-            </button>
-          ) : null}
+            {/* Post Text */}
+            <div className='post-text'>
+              <Markup content={data} />
 
-          {/* Other Videos or gifs */}
-          {post.secure_media_embed.media_domain_url ? (
-            <div id='videos'>
-              <iframe
-                src={post.secure_media_embed.media_domain_url}
-                width='100%'
-                height='200px'
-                allowFullScreen
-              ></iframe>
+              {/* Reddit Video */}
+              {post.secure_media &&
+              post.secure_media.reddit_video &&
+              post.secure_media.reddit_video.fallback_url ? (
+                <iframe
+                  clsssName='reddit-video'
+                  height='512px'
+                  width='100%'
+                  src={post.secure_media.reddit_video.fallback_url}
+                  allowFullScreen
+                ></iframe>
+              ) : null}
+              {post.selftext ? (
+                <button onClick={() => togglePostData()}>
+                  Show Text
+                </button>
+              ) : null}
+
+              {/* Other Videos or gifs */}
+              {post.secure_media_embed.media_domain_url ? (
+                <h2>Contains Media/Gif</h2>
+              ) : // <div id='videos'>
+              //   <iframe
+              //     src={post.secure_media_embed.media_domain_url}
+              //     width='100%'
+              //     height='200px'
+              //     allowFullScreen
+              //   ></iframe>
+              // </div>
+              null}
             </div>
-          ) : null}
-        </div>
 
-        {/* Extra details */}
-        <div id='extra-details'>
-          <p>{timePassed}</p>
+            {/* Extra details */}
+            <div id='extra-details'>
+              <p>{timePassed}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

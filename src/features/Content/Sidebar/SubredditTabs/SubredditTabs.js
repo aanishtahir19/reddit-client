@@ -1,6 +1,6 @@
-import { changeSubreddit } from "../../PostList/PostListSlice";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { changeSubreddit } from '../../PostList/PostListSlice';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 function SubredditTabs({ src, subText, subreddit, listing }) {
   const dispatch = useDispatch();
 
@@ -10,12 +10,12 @@ function SubredditTabs({ src, subText, subreddit, listing }) {
 
   return (
     <Link
-      to={`/${subText}/${listing}`}
+      to={`/r/${subText}/${listing}`}
       // state={{subreddit: subreddit, listing: listing}}
     >
-      <li className={subreddit ? "active" : null}>
+      <li className={subreddit ? 'active' : null}>
         <button onClick={() => handleClick(subText)}>
-          <img src={src} alt="" />
+          <img src={src} alt='' />
           r/{subText}
         </button>
       </li>
