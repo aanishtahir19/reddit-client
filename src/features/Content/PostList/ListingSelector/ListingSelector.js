@@ -87,7 +87,7 @@ function ListingSelector() {
         )}
       </Link>
       <Link
-        to={`r/${subreddit}/rising`}
+        to={`/r/${subreddit}/rising`}
         // state={{subreddit: subreddit, listing: selectedListing}}
       >
         {selectedListing === 'rising' ? (
