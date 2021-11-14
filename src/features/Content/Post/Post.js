@@ -17,11 +17,12 @@ function Post({post}) {
   // let listing
   let converter = new Showdown.Converter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    // dispatch(fetchPostData(id));
-    window.scrollTo(0, 0);
-  }, [post]);
-
+  // useEffect(() => {
+  //   // dispatch(fetchPostData(id));
+    
+  // }, [post]);
+  
+  setTimeout(function () { window.scrollTo(0, 0); }, 100);
   let timePassed = timePassedPosted(post.created);
   const imagesrc = () => {
     if (post.preview !== undefined) {
