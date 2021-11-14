@@ -32,7 +32,7 @@ function Header() {
               type='text'
               name='search'
               id='search'
-              placeholder='Search'
+              placeholder='Search Subreddit'
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

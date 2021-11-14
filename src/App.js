@@ -12,7 +12,7 @@ import Content from './features/Content/Content.js';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"style={{backgroundColor:"black"}}>
       <Header/>
       
         <Content />

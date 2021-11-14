@@ -29,7 +29,10 @@
 $color-branding : #3d5af1;
 $color-success :#45b81f;
 $color-failure:#ff304f;
-
+$color-black-shade1:#232324;
+$color-gray-light:#272729;
+$color-gray-dark:#141414;
+$color-gray-border:#4b4b4b;
 // Logo color
 @mixin logo-color {
     filter: invert(22%) sepia(69%) saturate(2812%) hue-rotate(225deg) brightness(114%) contrast(89%);

@@ -4,7 +4,8 @@
     // background-color: black;
     padding: 10px 0;
     box-shadow: -1px 5px 15px 0px grey;
-    background-color: white;
+    background-color: font-color.$color-black-shade1;
+    border-bottom:  2px solid font-color.$color-gray-light;
   .header-container {
       
     padding: 10px 10rem;
@@ -21,13 +22,13 @@
           text-decoration: none;
           display: flex;
           align-items: center;
-          color: black;
+          color: white;
         .logo {
           width: 1.5rem;
           @include font-color.logo-color;
         }
         .logo-highlight {
-          color: blue;
+          color: white;
           @include font-color.logo-font;
           margin-left: 5px;
         }
@@ -47,8 +48,13 @@
         border-radius: 3px;
         border: none;
         padding: 5px 10px;
-        background-color: font-color.$color-searchbar;
+        background-color: font-color.$color-gray-dark;
         font-family: Ubuntu, sans-serif;
+        border:2px solid font-color.$color-gray-light;
+        color:white;
+        &:hover{
+          border:2px solid white;
+        }
         
       }
       button{

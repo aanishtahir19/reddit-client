@@ -5,13 +5,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color:white;
     button {
       width: 25px;
       border: none;
       background-color: transparent;
       cursor: pointer;
       &:hover {
-        background-color: rgb(235, 232, 232);
+        background-color: transparent;
+      }
+      .upArrow, .downArrow{
+        fill: white;
       }
 
       .upArrow {
