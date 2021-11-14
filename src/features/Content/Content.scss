@@ -1,5 +1,7 @@
+@import "../../fonts-colors";
 .content{
-    margin-top: 20px;
+    background-color: $color-black-bg;
+    padding-top: 20px;
     .content-container{
         min-width:780px;
         max-width: 1050px;

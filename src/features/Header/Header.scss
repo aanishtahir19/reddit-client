@@ -3,9 +3,9 @@
 #header {
     // background-color: black;
     padding: 10px 0;
-    box-shadow: -1px 5px 15px 0px grey;
-    background-color: font-color.$color-black-shade1;
-    border-bottom:  2px solid font-color.$color-gray-light;
+    // box-shadow: -1px 5px 15px 0px rgb(161, 127, 127);
+    background-color: font-color.$color-gray-light;
+    border-bottom:  2px solid font-color.$color-gray-border;
   .header-container {
       
     padding: 10px 10rem;
@@ -62,6 +62,7 @@
           background-color: transparent;
           margin-left: 5px;
           cursor: pointer;
+          color:white;
           .fa-search{
               color:font-color.$color-searchIcon;
               font-size: 1.2rem;
