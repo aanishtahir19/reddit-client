@@ -10,7 +10,7 @@ import { Markup } from 'interweave';
 import './Post.scss';
 import { Link } from 'react-router-dom';
 import { setCurrentPostId } from '../PostList/PostListSlice';
-function Post({post}) {
+function Post({y, post}) {
   let { sub, list, id } = useParams();
   // let [data, setData] = useState(null);
   // let subreddit = useSelector(state=> state.PostList.subreddit);
@@ -67,7 +67,7 @@ function Post({post}) {
     }
   };
   return (
-    <div className='post'>
+    <div className='post' style={{top:`${y}px`}}>
       {<PostUpvotes upvotes={post.ups} />}
       <div className='preview-content'>
         <p>{`Posted by u/${post.author} ${timePassed}`}</p>

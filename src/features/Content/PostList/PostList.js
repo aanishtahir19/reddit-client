@@ -43,6 +43,7 @@ const [stl, setStl] = useState({display:"block"})
   }
   useEffect(()=>{
     if (currentPostId){
+      setScrollPosition(window.scrollY)
       setStl({visibility:"hidden", })
       // elem.style.height="100vh";
       // elem.style.overflow="hidden"
@@ -69,7 +70,7 @@ const [stl, setStl] = useState({display:"block"})
   return (
     <div className='cont'>
       {/* {id !== undefined ? <Post /> : null} */}
-      {currentPostId && <Post post={posts.filter(post=> post.id === currentPostId)[0]} />}
+      {currentPostId && <Post y={scrollPosition}post={posts.filter(post=> post.id === currentPostId)[0]} />}
       {/* <Post /> */}
       <div className='post-list'id="postList" style={stl}>
         <ListingSelector />
