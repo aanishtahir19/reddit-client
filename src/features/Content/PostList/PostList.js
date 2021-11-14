@@ -65,12 +65,12 @@ function PostList() {
   }
   let vis = 'inherit';
   if (id !== undefined) {
-    console.log(id);
+    console.log(posts.filter(post=> post.id === id)[0]);
     vis = 'none';
   }
   return (
     <div className='cont'>
-      {id !== undefined ? <Post /> : null}
+      {id !== undefined ? <Post post={posts.filter(post=> post.id === id)[0]} /> : null}
       {/* <Post /> */}
       <div className='post-list' style={{ display: vis }}>
         <ListingSelector />

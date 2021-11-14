@@ -9,18 +9,18 @@ import { useState } from 'react';
 import { Markup } from 'interweave';
 import './Post.scss';
 import { Link } from 'react-router-dom';
-function Post() {
+function Post({post}) {
   let { sub, list, id } = useParams();
-  let post = useSelector((state) => state.PostData.data);
+//   let post = useSelector((state) => state.PostData.data);
   // let [data, setData] = useState(null);
   // let subreddit = useSelector(state=> state.PostList.subreddit);
   // let listing
   let converter = new Showdown.Converter();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPostData(id));
+    // dispatch(fetchPostData(id));
     window.scrollTo(0, 0);
-  }, [dispatch]);
+  }, [post]);
 
   let timePassed = timePassedPosted(post.created);
   const imagesrc = () => {
