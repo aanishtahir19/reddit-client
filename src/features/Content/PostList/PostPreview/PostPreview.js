@@ -13,8 +13,10 @@ import { Markup } from 'interweave';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { setCurrentPostId } from '../PostListSlice';
 function PostPreview({ post }) {
+  const dispatch = useDispatch();
   let [data, setData] = useState(null);
   let { sub, list, id } = useParams();
   let subreddit = useSelector((state) => state.PostList.subreddit);
@@ -79,12 +81,12 @@ function PostPreview({ post }) {
       });
     }
   };
-  const openPost = () => {
-    console.log(post);
+  const setPostId = () => {
+    dispatch(setCurrentPostId(post.id))
   };
   return (
-    <div onClick={openPost}>
-      <Link to={`/r/${sub}/id/${post.id}`}>
+    <div onClick={setPostId}>
+      {/* <Link to={`/r/${sub}/id/${post.id}`}> */}
         <div className='post-preview'>
           {<PostUpvotes upvotes={post.ups} />}
           <div className='preview-content'>
@@ -147,7 +149,7 @@ function PostPreview({ post }) {
             </div>
           </div>
         </div>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 }

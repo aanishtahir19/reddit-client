@@ -9,18 +9,14 @@ import { useState } from 'react';
 import { Markup } from 'interweave';
 import './Post.scss';
 import { Link } from 'react-router-dom';
-function Post() {
+import { setCurrentPostId } from '../PostList/PostListSlice';
+function Post({post}) {
   let { sub, list, id } = useParams();
-  let post = useSelector((state) => state.PostData.data);
   // let [data, setData] = useState(null);
   // let subreddit = useSelector(state=> state.PostList.subreddit);
   // let listing
   let converter = new Showdown.Converter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchPostData(id));
-    window.scrollTo(0, 0);
-  }, [dispatch]);
 
   let timePassed = timePassedPosted(post.created);
   const imagesrc = () => {
@@ -51,16 +47,6 @@ function Post() {
   };
   let data = null;
   if (post.selftext) data = converter.makeHtml(post.selftext);
-  // const togglePostData = () => {
-  //   // console.log(post.url.match("reddit"));
-  //   if (data) {
-  //     setData(null);
-  //   } else {
-  //     if (post.selftext) {
-  //       setData(converter.makeHtml(post.selftext));
-  //     }
-  //   }
-  // };
   const getPostExtraImages = () => {
     if (post.media_metadata) {
       let data = post.media_metadata;
@@ -141,9 +127,9 @@ function Post() {
           <p>{timePassed}</p>
         </div>
       </div>
-      <Link to={`/r/${sub}`}>
-        <button className='back'>Back</button>
-      </Link>
+      
+        <button className='back'onClick={()=>dispatch(setCurrentPostId(null))}>Back</button>
+     
     </div>
   );
 }

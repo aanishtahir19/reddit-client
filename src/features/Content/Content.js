@@ -28,15 +28,15 @@ function Content() {
 
           <Route path='/r/:sub/:list'>
             <PostList />
-            {sidebar()}
+            {/* {sidebar()} */}
           </Route>
           <Route path='/r/:sub'>
             <PostList />
-            {sidebar()}
+            {/* {sidebar()} */}
           </Route>
           <Route exact path='/'>
             <PostList />
-            {sidebar()}
+            {/* {sidebar()} */}
           </Route>
         </Switch>
       </div>

@@ -30,10 +30,14 @@ export const PostList = createSlice({
         defaultListing:"hot",
         subreddit:"home",
         listing:"hot",
+        currentPostId: null,
         posts:[]
 
     },
     reducers:{
+        setCurrentPostId:(state, action)=>{
+            state.currentPostId = action.payload;
+        },
         changeListing: (state, action)=>{
             state.listing = action.payload;
         },
@@ -61,5 +65,5 @@ export const PostList = createSlice({
 
     }
 })
-export const {changeListing, changeSubreddit} = PostList.actions;
+export const {changeListing, changeSubreddit, setCurrentPostId} = PostList.actions;
 export default PostList.reducer;
