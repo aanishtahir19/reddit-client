@@ -23,8 +23,10 @@ a{
   .preview-content {
     width: 90%;
     margin-left: 10px;
+    margin-right:10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     p{
       @include font-color.font-post-details;
     }
@@ -63,17 +65,20 @@ a{
       }
 
     }
-    .post-text{
-      margin-top: 2rem;
-      p{
-        margin-bottom: 1em;
-        line-height: 1.5rem;
-        color: black;
-        font-size: 1rem;
-      }
+    // .post-text{
+    //   margin-top: 2rem;
+    //   p{
+    //     margin-bottom: 1em;
+    //     line-height: 1.5rem;
+    //     color: black;
+    //     font-size: 1rem;
+    //   }
       
-
-    }
+      #postUrl{
+        color:#3484c1;
+        font-size:12px;
+      }
+    // }
     #extra-details{
       margin-top: 10px;
     }
@@ -86,5 +91,15 @@ a{
         
       }
     }
+  }
+}
+#thumbnail{
+  width: 150px;
+  height:150px;
+}
+@media only screen and (max-width: 600px){
+  #thumbnail{
+    width:100px;
+    height: 100px;
   }
 }

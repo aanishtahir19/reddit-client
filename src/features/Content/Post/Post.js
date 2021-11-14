@@ -143,7 +143,7 @@ function Post({post}) {
         </div>
       </div>
       <Link to={`/r/${sub}`}>
-        <button className='back'>Back</button>
+        <button className='back'style={{height:"auto"}}>Back</button>
       </Link>
     </div>
   );
