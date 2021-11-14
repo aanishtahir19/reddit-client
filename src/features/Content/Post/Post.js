@@ -9,9 +9,9 @@ import { useState } from 'react';
 import { Markup } from 'interweave';
 import './Post.scss';
 import { Link } from 'react-router-dom';
-function Post({post}) {
+function Post({ post }) {
   let { sub, list, id } = useParams();
-//   let post = useSelector((state) => state.PostData.data);
+  //   let post = useSelector((state) => state.PostData.data);
   // let [data, setData] = useState(null);
   // let subreddit = useSelector(state=> state.PostList.subreddit);
   // let listing
@@ -19,17 +19,17 @@ function Post({post}) {
   const dispatch = useDispatch();
   // useEffect(() => {
   //   // dispatch(fetchPostData(id));
-    
+
   // }, [post]);
-  
-  setTimeout(function () { window.scrollTo(0, 0); }, 100);
+
+  setTimeout(function () {
+    window.scrollTo(0, 0);
+  }, 100);
   let timePassed = timePassedPosted(post.created);
   const imagesrc = () => {
     if (post.preview !== undefined) {
       let src;
-      if (
-        post.preview.images[0].source.url.match('external-preview')
-      ) {
+      if (post.preview.images[0].source.url.match('external-preview')) {
         return null;
       }
       src = post.preview.images[0].source.url.replace('preview', 'i');
@@ -69,28 +69,33 @@ function Post({post}) {
         if (data[key].status === 'valid') {
           if (data[key].e === 'Image') {
             let url = data[key].s.u.replace('preview', 'i');
-            return (
-              <img
-                src={url}
-                alt='Image'
-                style={{ padding: '10px' }}
-              />
-            );
+            return <img src={url} alt='Image' style={{ padding: '10px' }} />;
           }
         }
       });
     }
   };
   return (
-    <div className='post'>
-      {<PostUpvotes upvotes={post.ups} />}
-      <div className='preview-content'>
-        <p>{`Posted by u/${post.author} ${timePassed}`}</p>
-        <h2>{post.title}</h2>
+    <div className='post' onClick={()=> console.log(post.secure_media_embed)}>
+      <div id='postheader'>
+        <div id='postheader-sub'>
+          {<PostUpvotes upvotes={post.ups} />}
+          <div id="postheader-sub-title">
+            <p>{`Posted by u/${post.author} ${timePassed}`}</p>
+            <h2>{post.title}</h2>
+          </div>
+        </div>
+        <Link to={`/r/${sub}`}>
+          <button className='back' style={{ height: 'auto' }}>
+            Back
+          </button>
+        </Link>
+      </div>
 
+      <div className='preview-content'>
         {/* Post Url */}
         {post.url && post.url.match('www.reddit.com') === null ? (
-          <a href={post.url} target='_blank'>
+          <a href={post.url} id="postUrl" target='_blank'>
             {post.url}
           </a>
         ) : null}
@@ -129,9 +134,9 @@ function Post({post}) {
             <div id='videos'>
               <iframe
                 src={post.secure_media_embed.media_domain_url}
-                width='100%'
-                height='200px'
+                frameborder='0'
                 allowFullScreen
+                width="100%"
               ></iframe>
             </div>
           ) : null}
@@ -142,9 +147,6 @@ function Post({post}) {
           <p>{timePassed}</p>
         </div>
       </div>
-      <Link to={`/r/${sub}`}>
-        <button className='back'style={{height:"auto"}}>Back</button>
-      </Link>
     </div>
   );
 }

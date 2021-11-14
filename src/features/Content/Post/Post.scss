@@ -2,105 +2,139 @@
 @use '../../../fonts-colors' as font-color;
 @import '../../../fonts-colors';
 
-
-.post {
-  border: 2px solid $color-gray-border;
-  border-radius:5px;
-  background-color: $color-gray-light;
-  color:white;
-  //   background-color: lightgray;
-  // width: 100%;
-  padding: 20px 20px 20px 0;
-  
-  position: absolute;
-  top: 0;
-  left:0;
-  right: 0;
+#postheader {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  #postheader-sub {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    #postheader-sub-title {
+      margin-left: 10px;
+      margin-right: 10px;
+      h2 {
+        margin: 10px 0;
+        line-height: 1.3rem;
+        font-weight: 500;
+      }
+      p {
+        @include font-color.font-post-details;
+      }
+    }
+  }
+}
+.post {
+  border: 2px solid $color-gray-border;
+  border-radius: 5px;
+  background-color: $color-gray-light;
+  color: white;
+  //   background-color: lightgray;
+  // width: 100%;
+  padding: 20px 10px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
   margin: 0 auto;
   width: 600px;
-  &:hover{
-    border: 2px solid #818384
+  &:hover {
+    border: 2px solid #818384;
   }
-  .back{
+  .back {
     height: 3rem;
     padding: 0.5rem 1rem;
     font-family: Ubuntu, sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
   }
-  
+
   .preview-content {
-    width: 80%;
-    margin-left: 10px;
+    // width: 80%;
+    // margin-left: 10px;
     display: flex;
     flex-direction: column;
-    p{
+    p {
       @include font-color.font-post-details;
     }
-    
-    h2{
+
+    h2 {
       margin: 10px 0;
       line-height: 1.3rem;
       font-weight: 500;
     }
-    #videos{
-      width : 400px;
-      height: 210px;
+    #videos {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
-    a{
+    a {
       overflow-wrap: break-word;
       line-height: 1.3rem;
     }
-    .image-container{
+    #postUrl {
+      margin-left: 4rem;
+      color: #3484c1;
+      font-size: 12px;
+    }
+    @media only screen and (max-width: 600px) {
+      #postUrl {
+        margin-left: 2rem;
+      }
+    }
+    .image-container {
       margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .reddit-video{
+    .reddit-video {
       height: 512px;
     }
-    button{
-      margin-top:1rem;
+    button {
+      margin-top: 1rem;
       border: 2px solid black;
       border-radius: 5rem;
       padding: 0.5rem 0.7rem;
       font-weight: 500;
       float: right;
-      &:hover{
+      &:hover {
         background-color: rgb(221, 221, 221);
       }
-
     }
-    .post-text{
+    .post-text {
       margin-top: 2rem;
-      p{
+      padding: 0 20px;
+      p {
         margin-bottom: 1em;
         line-height: 1.5rem;
-        color: black;
+        color: white;
+        text-align: justify;
         font-size: 1rem;
       }
-      
-
-    }
-    #extra-details{
-      margin-top: 10px;
-    }
-    @media only screen and (max-width: 600px)  {
-      #videos{
-        width: 100%;
-        iframe > iframe{
-          width: 100%;
-        }
-        
+      a{
+        color:#3484c1;
+        font-size:14px;
       }
+    }
+    #extra-details {
+      margin-top: 10px;
+      margin-left: 20px;
     }
   }
 }
-@media only screen and (max-width: 600px)  {
-  .post{
+@media only screen and (max-width: 600px) {
+  .post {
     width: 100%;
   }
 }

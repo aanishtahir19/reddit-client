@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { changeListing } from '../PostListSlice.js';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { setScroll } from '../PostListSlice.js';
 function ListingSelector() {
   const selectedListing = useSelector(
     (state) => state.PostList.listing
@@ -11,15 +12,19 @@ function ListingSelector() {
   const dispatch = useDispatch();
   const subreddit = useSelector((state) => state.PostList.subreddit);
   const handleRisingClick = (e) => {
+    dispatch(setScroll(0));
     dispatch(changeListing('rising'));
   };
   const handleHotClick = (e) => {
+    dispatch(setScroll(0));
     dispatch(changeListing('hot'));
   };
   const handleNewClick = (e) => {
+    dispatch(setScroll(0));
     dispatch(changeListing('new'));
   };
   const handleTopClick = (e) => {
+    dispatch(setScroll(0));
     dispatch(changeListing('top'));
   };
   console.log();

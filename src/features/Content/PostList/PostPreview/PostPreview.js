@@ -145,6 +145,7 @@ function PostPreview({ post }) {
         (post.thumbnail !== undefined) | null &&
         post.thumbnail !== 'self' &&
         post.thumbnail !== 'nsfw'&&
+        post.thumbnail!== ''&&
         post.thumbnail !== 'default' ? (
           <img
             id="thumbnail"
