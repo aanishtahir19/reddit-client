@@ -8,7 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 // Import UseSelector
 import { useSelector, useDispatch } from 'react-redux';
 // import UseEffect
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // import middleware thunk for fetching subreddit posts
 import { fetchSubredditPosts } from './PostListSlice.js';
 // Import Listing Selector Component
@@ -24,6 +24,7 @@ function PostList() {
   const defaultListing = useSelector(
     (state) => state.PostList.defaultListing
   );
+  const scrollPosition = useSelector(state=> state.PostList.scrollPosition);
   const defaultSub = useSelector(
     (state) => state.PostList.defaultSub
   );
@@ -44,7 +45,11 @@ function PostList() {
   useEffect(() => {
     dispatch(fetchSubredditPosts());
   }, [dispatch, listing, subreddit]);
-
+  // window.scrollTo(0, scrollPosition)
+  // useEffect(()=>{
+  //   window.scrollTo(0, scrollPosition)
+  // }, [scrollPosition])
+  setTimeout(function () { window.scrollTo(0, scrollPosition); }, 100);
   const loadingFlag = useSelector(
     (state) => state.PostList.isLoading
   );

@@ -30,12 +30,16 @@ export const PostList = createSlice({
         defaultListing:"hot",
         subreddit:"home",
         listing:"hot",
+        scrollPosition: 0,
         posts:[]
 
     },
     reducers:{
         changeListing: (state, action)=>{
             state.listing = action.payload;
+        },
+        setScroll:(state, action)=>{
+            state.scrollPosition = action.payload;
         },
         changeSubreddit:(state, action)=>{
             
@@ -61,5 +65,5 @@ export const PostList = createSlice({
 
     }
 })
-export const {changeListing, changeSubreddit} = PostList.actions;
+export const {changeListing, changeSubreddit, setScroll} = PostList.actions;
 export default PostList.reducer;

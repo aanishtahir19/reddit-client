@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { changeSubreddit } from '../Content/PostList/PostListSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { setScroll } from '../Content/PostList/PostListSlice';
 function Header() {
   let [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
   const handleClick = () => {
     console.log(searchTerm);
+    dispatch(setScroll(0))
     dispatch(changeSubreddit(searchTerm.toLowerCase()));
     setSearchTerm('');
   };

@@ -13,8 +13,10 @@ import { Markup } from 'interweave';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import { setScroll } from '../PostListSlice';
+import { useDispatch } from 'react-redux';
 function PostPreview({ post }) {
+  let dispatch = useDispatch()
   let [data, setData] = useState(null);
   let { sub, list, id } = useParams();
   let subreddit = useSelector((state) => state.PostList.subreddit);
@@ -80,7 +82,8 @@ function PostPreview({ post }) {
     }
   };
   const openPost = () => {
-    console.log(post);
+    console.log(window.scrollY);
+    dispatch(setScroll(window.scrollY));
   };
   return (
     <div onClick={openPost}>
