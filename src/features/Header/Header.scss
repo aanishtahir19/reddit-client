@@ -1,0 +1,97 @@
+@use "../../fonts-colors" as font-color;
+
+#header {
+    // background-color: black;
+    padding: 10px 0;
+    // box-shadow: -1px 5px 15px 0px rgb(161, 127, 127);
+    background-color: font-color.$color-gray-light;
+    border-bottom:  2px solid font-color.$color-gray-border;
+  .header-container {
+      max-width: 900px;
+      margin:0 auto;
+      justify-content: center;
+    // padding: 10px 10rem;
+    display:flex;
+    justify-content: left;
+    
+      .logo-container {
+        display: inline-flex;
+        width: 33%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+        a{
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          color: white;
+        .logo {
+          width: 1.5rem;
+          @include font-color.logo-color;
+        }
+        .logo-highlight {
+          color: white;
+          @include font-color.logo-font;
+          margin-left: 5px;
+        }
+        span {
+          margin-right: 0.3rem;
+          @include font-color.logo-font;
+        }}
+      }
+    
+    
+    .search-container {
+        // width: 33%;
+        display:inline-flex;
+      #search {
+          width: 400px;
+        height: 2rem;
+        border-radius: 3px;
+        border: none;
+        padding: 5px 10px;
+        background-color: font-color.$color-gray-dark;
+        font-family: Ubuntu, sans-serif;
+        border:2px solid font-color.$color-gray-light;
+        color:white;
+        &:hover{
+          border:2px solid white;
+        }
+        
+      }
+      button{
+          border:none;
+          background-color: transparent;
+          margin-left: 5px;
+          cursor: pointer;
+          color:white;
+          .fa-search{
+              color :white;
+              font-size: 1.2rem;
+              margin-left: 0.5rem;
+          }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+   #header{
+       .header-container{
+           flex-direction: column;
+           padding: 10px 30px;
+           align-items: center;
+           justify-content: center;
+           .logo-container{
+             justify-content: center;
+           }
+           .search-container{
+               margin-top: 10px;
+              //  min-width: 100%;
+               #search{
+                   width: auto;
+                   text-align: center;
+               }
+           }
+       }
+   }
+}

@@ -1,0 +1,39 @@
+@use "../../fonts-colors"as font-color;
+
+.upvotes {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+    button {
+      width: 25px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      &:hover {
+        background-color: transparent;
+      }
+      .upArrow, .downArrow{
+        fill: white;
+      }
+
+      .upArrow {
+        &:hover {
+          fill: font-color.$color-success;
+        }
+      }
+      .downArrow {
+        margin-top: 3px;
+
+        &:hover {
+          fill: font-color.$color-failure;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .upvotes{
+      padding: 0 10px 0 10px;
+    }
+  }

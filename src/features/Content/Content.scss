@@ -1,0 +1,21 @@
+@import "../../fonts-colors";
+.content{
+    background-color: $color-black-bg;
+    padding-top: 20px;
+    .content-container{
+        min-width:780px;
+        max-width: 1050px;
+        min-height: 100vh;
+        margin:0 auto;
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: space-between;
+    }
+    @media only screen and (max-width: 768px){
+        .content-container{
+            min-width: 100%;
+            // flex-direction: column;
+            // align-items: center;
+        }
+    }
+}
