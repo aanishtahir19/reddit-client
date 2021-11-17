@@ -60,6 +60,9 @@ function PostList() {
           {<Skeleton count={5} />}
         </p>
         <p>{<Skeleton count={5} />}</p>
+        <Skeleton>
+          <p style={{width:"100%", height:"2rem", marginTop:"2rem"}}></p>
+        </Skeleton>
       </div>
     );
   }

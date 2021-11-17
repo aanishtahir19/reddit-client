@@ -105,7 +105,7 @@ function PostPreview({ post }) {
           {post.secure_media &&
           post.secure_media.reddit_video &&
           post.secure_media.reddit_video.fallback_url ? (
-            <h2 id="containsMedia">Contains Media/Gif</h2>
+            <h2 className="containsMedia">Contains Media/Gif</h2>
           ) : // <iframe
           //   clsssName='reddit-video'
           //   height='512px'
@@ -126,7 +126,7 @@ function PostPreview({ post }) {
           {/* </div> */}
           {/* Other Videos or gifs */}
           {post.secure_media_embed.media_domain_url ? (
-            <h2>Contains Media/Gif</h2>
+            <h2 className="containsMedia">Contains Media/Gif</h2>
           ) : // <div id='videos'>
           //   <iframe
           //     src={post.secure_media_embed.media_domain_url}
